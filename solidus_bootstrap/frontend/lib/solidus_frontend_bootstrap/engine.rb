@@ -1,4 +1,4 @@
-require 'bootstrap-sass/engine'
+require 'bootstrap/engine'
 
 module SolidusFrontendBootstrap
   class Engine < Rails::Engine

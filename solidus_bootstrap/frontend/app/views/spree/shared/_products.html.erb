@@ -22,17 +22,17 @@
 </div>
 
 <% if products.any? %>
-<ul id="products" class="inline product-listing" data-hook>
+<ul id="products" class="inline product-listing row" data-hook>
   <% products.each do |product| %>
     <% url = product_path(product, :taxon_id => @taxon.try(:id)) %>
     <div id="product_<%= product.id %>" class="col-md-3 col-sm-6 product-list-item" data-hook="products_list_item" itemscope itemtype="http://schema.org/Product">
-      <div class="panel panel-default">
+      <div class="card card-default">
         <% cache(@taxon.present? ? [I18n.locale, current_pricing_options, @taxon, product] : [I18n.locale, current_pricing_options, product]) do %>
-          <div class="panel-body text-center product-body">
+          <div class="card-body text-center product-body">
             <%= link_to image_tag(product.display_image.attachment(:small), itemprop: "image"), url, itemprop: 'url' %><br/>
             <%= link_to truncate(product.name, :length => 50), url, :class => 'info', :itemprop => "name", :title => product.name %>
           </div>
-          <div class="panel-footer text-center">
+          <div class="card-footer text-center">
             <span itemprop="offers" itemscope itemtype="http://schema.org/Offer">
           	  <span class="price selling lead" itemprop="price"><%= display_price(product) %></span>
             </span>
